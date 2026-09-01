@@ -4,7 +4,10 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
+		"type-check": "cd server && tsc --noEmit",
 		"lint": "biome lint --write",
+		"backend:build": "cd server && tsc --build",
+		"backend:dev": "cd server && bun run dev",
 		"format:check": "biome format --write",
 		"format": "biome check --write",
 		"prepare": "husky"

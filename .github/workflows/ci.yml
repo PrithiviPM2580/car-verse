@@ -1,0 +1,44 @@
+name: Car Verse CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+          cache: true
+
+      - name: Install root dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install backend dependencies
+        working-directory: server
+        run: bun install --frozen-lockfile
+
+      - name: Run Lint
+        run: bun run lint
+
+      - name: Run Type Check
+        run: bun run type-check
+
+      - name: Run Format Check
+        run: bun run format:check
+
+      - name: Build Backend
+        run: bun run backend:build

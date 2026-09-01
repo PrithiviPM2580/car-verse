@@ -34,9 +34,7 @@
         "@types/passport": "^1.0.17",
         "@types/passport-google-oauth20": "^2.0.17",
         "chalk": "^6.0.0",
-      },
-      "peerDependencies": {
-        "typescript": "^5",
+        "typescript": "5.9.3",
       },
     },
   },
