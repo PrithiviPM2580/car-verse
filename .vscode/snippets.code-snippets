@@ -204,16 +204,27 @@
 		"body": ["console.error(${1});$0"],
 		"description": "Create console.error"
 	},
-	"Server Entry Header": {
-		"prefix": "serverheader",
+	"App File Header": {
+		"prefix": "appheader",
 		"body": [
 			"// ============================================================",
-			"// 🚀 ${1:Server} — ${2:Application entry point}",
+			"// 🚀 App — Application setup and configuration",
 			"// ============================================================",
 			"",
 			"$0"
 		],
-		"description": "Server entry point header"
+		"description": "Application setup file header"
+	},
+	"Server File Header": {
+		"prefix": "serverheader",
+		"body": [
+			"// ============================================================",
+			"// 🌐 Server — HTTP server bootstrap",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "HTTP server bootstrap file header"
 	},
 	"Config File Header": {
 		"prefix": "configheader",
@@ -643,5 +654,128 @@
 			"$0"
 		],
 		"description": "Standard project file header"
+	},
+	"Section Header": {
+		"prefix": "sectionheader",
+		"body": [
+			"// ------------------------------------------------------",
+			"//  ${1:Section Name}",
+			"// ------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert a standard section header"
+	},
+	"Subsection Header": {
+		"prefix": "subsectionheader",
+		"body": [
+			"// ------------------------------------------------------",
+			"//  ${1:Subsection Name}",
+			"// ------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert a standard subsection header"
+	},
+	"Function Header": {
+		"prefix": "fnheader",
+		"body": [
+			"// -----------------------------------------------------------------",
+			"// Fn:${1:functionName}() — Desc: ${2:Description}",
+			"// -----------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert a standard function documentation header"
+	},
+	"Object Header": {
+		"prefix": "objheader",
+		"body": [
+			"// -----------------------------------------------------------------",
+			"// Obj:${1:objectName} — Desc: ${2:Description}",
+			"// -----------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert a standard object documentation header"
+	},
+	"Class Header": {
+		"prefix": "classheader",
+		"body": [
+			"// -----------------------------------------------------------------",
+			"// Class:${1:ClassName} — Desc: ${2:Description}",
+			"// -----------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert a standard class documentation header"
+	},
+	"Interface Header": {
+		"prefix": "interfaceheader",
+		"body": [
+			"// -----------------------------------------------------------------",
+			"// Interface:${1:InterfaceName} — Desc: ${2:Description}",
+			"// -----------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert a standard interface documentation header"
+	},
+	"Type Header": {
+		"prefix": "typeheader",
+		"body": [
+			"// -----------------------------------------------------------------",
+			"// Type:${1:TypeName} — Desc: ${2:Description}",
+			"// -----------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert a standard type documentation header"
+	},
+	"Constant Header": {
+		"prefix": "constheader",
+		"body": [
+			"// -----------------------------------------------------------------",
+			"// Const:${1:CONSTANT_NAME} — Desc: ${2:Description}",
+			"// -----------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert a standard constant documentation header"
+	},
+	"TODO Comment": {
+		"prefix": "todo",
+		"body": ["// Todo: ${1:Description}"],
+		"description": "Insert a TODO comment"
+	},
+	"FIXME Comment": {
+		"prefix": "fixme",
+		"body": ["// FIXME: ${1:Description}"],
+		"description": "Insert a FIXME comment"
+	},
+	"NOTE Comment": {
+		"prefix": "note",
+		"body": ["// NOTE: ${1:Description}"],
+		"description": "Insert a NOTE comment"
+	},
+	"WARNING Comment": {
+		"prefix": "warning",
+		"body": ["// WARNING: ${1:Description}"],
+		"description": "Insert a warning comment"
+	},
+	"Inline Comment": {
+		"prefix": "inline",
+		"body": ["// ${1:Description}"],
+		"description": "Insert a simple inline comment"
+	},
+	"Block Comment": {
+		"prefix": "blockcomment",
+		"body": [
+			"/*",
+			" * ${1:Explanation}",
+			" *",
+			" * ${2:Additional details}",
+			" */",
+			"",
+			"$0"
+		],
+		"description": "Insert a multiline block comment"
+	},
+	"Information Comment": {
+		"prefix": "inf",
+		"body": ["// Info: ${1:Info}"],
+		"description": "Insert an information comment"
 	}
 }

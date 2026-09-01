@@ -1,10 +1,11 @@
 {
 	"editor.defaultFormatter": "biomejs.biome",
+	"js/ts.suggest.enabled": true,
 	"editor.formatOnSave": true,
 	"explorer.compactFolders": false,
 	"better-comments.highlightPlainText": false,
 	"better-comments.multilineComments": true,
-	"workbench.colorTheme": "Monokai Dimmed",
+	// "workbench.colorTheme": "Monokai Dimmed",
 	"workbench.iconTheme": "material-icon-theme",
 	"material-icon-theme.files.associations": {
 		"*.servie.ts": "cobol"
@@ -68,8 +69,45 @@
 			"italic": false
 		},
 		{
+			"tag": "info",
+			"color": "#00FF00",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false,
+			"ignoreCase": true // <-- Add this line
+		},
+		{
 			"tag": "*",
 			"color": "#98C379",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "fixme",
+			"color": "#FF2D00",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "note",
+			"color": "#3498DB",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "warning",
+			"color": "#E5C07B",
 			"strikethrough": false,
 			"underline": false,
 			"backgroundColor": "transparent",

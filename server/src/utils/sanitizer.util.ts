@@ -1,7 +1,7 @@
 import mongoSanitizer from "@exortek/express-mongo-sanitize";
 import { appConfig } from "@/config/app.config";
 
-export const sanitize = () =>
+const sanitize = () =>
 	mongoSanitizer({
 		recursive: true,
 		maxDepth: 20,
@@ -9,3 +9,5 @@ export const sanitize = () =>
 		allowPrototypeKeys: appConfig.NODE_ENV !== "production",
 		preserveEmails: appConfig.NODE_ENV !== "production",
 	});
+
+export default sanitize;
