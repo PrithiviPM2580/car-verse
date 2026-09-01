@@ -1,12 +1,20 @@
 {
-  "name": "server",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  }
+	"name": "server",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"start": "node src/index.ts",
+		"dev": "tsx watch src/index.ts",
+		"lint": "biome lint --write",
+		"format:check": "biome format --write",
+		"format": "biome check --write"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.11",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
 }
