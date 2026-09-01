@@ -24,3 +24,5 @@ app.use(morganOptions);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(hpp({ keepFirst: true }));
+
+export default app;

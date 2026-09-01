@@ -12,6 +12,7 @@ export const appConfigSchema = z.object({
 	LOG_LEVEL: z
 		.enum(["error", "warn", "info", "http", "verbose", "debug", "silly"])
 		.default("info"),
+
 	JWT_SECRET: z.string("JWT secret must be provided"),
 	JWT_AUDIENCE: z.string().default("user"),
 	JWT_ISSUER: z.string().default("advance-mern-auth"),
@@ -19,8 +20,6 @@ export const appConfigSchema = z.object({
 	JWT_ACCESS_EXPIRES_IN: z.string().default("15m"), // 15 minutes
 	JWT_REFRESH_EXPIRES_IN: z.string().default("7d"), // 7 days
 	JWT_REFRESH_SECRET: z.string("JWT refresh secret must be provided"),
-	JWT_2FA_SECRET: z.string("JWT 2FA secret must be provided"),
-	JWT_2FA_EXPIRES_IN: z.string().default("5m"), // 5 minutes
 	EMAIL_VERIFICATION_EXPIRES_MINUTES: z.coerce
 		.number()
 		.int()
@@ -38,16 +37,10 @@ export const appConfigSchema = z.object({
 	GOOGLE_CLIENT_ID: z.string("Google client ID must be provided"),
 	GOOGLE_CLIENT_SECRET: z.string("Google client secret must be provided"),
 	GOOGLE_CALLBACK_URL: z.string("Google callback URL must be provided"),
-	GITHUB_CLIENT_ID: z.string("GitHub client ID must be provided"),
-	GITHUB_CLIENT_SECRET: z.string("GitHub client secret must be provided"),
-	GITHUB_CALLBACK_URL: z.string("GitHub callback URL must be provided"),
-	GOOGLE_LINK_CALLBACK_URL: z.string(
-		"Google link callback URL must be provided",
-	),
-	GITHUB_LINK_CALLBACK_URL: z.string(
-		"GitHub link callback URL must be provided",
-	),
+
 	MONGODB_URI: z.url("MongoDB connection string must be a valid URL"),
+	DB_NAME: z.string("Database name must be provided"),
+	APP_NAME: z.string("Application name must be provided"),
 });
 
 const parsedConfig = appConfigSchema.safeParse(process.env);
