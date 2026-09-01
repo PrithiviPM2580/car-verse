@@ -745,6 +745,11 @@
 		"body": ["// FIXME: ${1:Description}"],
 		"description": "Insert a FIXME comment"
 	},
+	"ERROR Comment": {
+		"prefix": "error",
+		"body": ["// ERROR: ${1:Description}"],
+		"description": "Insert an ERROR comment"
+	},
 	"NOTE Comment": {
 		"prefix": "note",
 		"body": ["// NOTE: ${1:Description}"],
