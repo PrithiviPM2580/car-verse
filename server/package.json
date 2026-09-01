@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "node src/index.ts",
 		"dev": "tsx watch src/index.ts",
-		"build": " tsc --build"
+		"build": " tsc --build",
+		"type-check": "tsc --noEmit"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
@@ -16,10 +17,8 @@
 		"@types/nodemailer": "^8.0.1",
 		"@types/passport": "^1.0.17",
 		"@types/passport-google-oauth20": "^2.0.17",
-		"chalk": "^6.0.0"
-	},
-	"peerDependencies": {
-		"typescript": "^5"
+		"chalk": "^6.0.0",
+		"typescript": "5.9.3"
 	},
 	"dependencies": {
 		"@exortek/express-mongo-sanitize": "^3.0.1",
