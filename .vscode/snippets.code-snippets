@@ -1,0 +1,647 @@
+{
+	"Next.js Component": {
+		"prefix": "nc",
+		"body": [
+			"export default function ${1:${TM_FILENAME_BASE/(^|-)(.)/${2:/upcase}/g}}() {",
+			"  return (",
+			"    <${2:div}>${3}</${2}>",
+			"  );",
+			"}"
+		],
+		"description": "Create a Next.js React component"
+	},
+	"Next.js Component Client": {
+		"prefix": "ncc",
+		"body": [
+			"\"use client\";",
+			"",
+			"export default function ${1:${TM_FILENAME_BASE/(^|-)(.)/${2:/upcase}/g}}() {",
+			"  return (",
+			"    <${2:div}>${3}</${2}>",
+			"  );",
+			"}"
+		],
+		"description": "Create a Next.js client component"
+	},
+	"Next.js Async Component": {
+		"prefix": "nca",
+		"body": [
+			"export default async function ${1:${TM_FILENAME_BASE/(^|-)(.)/${2:/upcase}/g}}() {",
+			"  return (",
+			"    <${2:div}>${3}</${2}>",
+			"  );",
+			"}"
+		],
+		"description": "Create an async Next.js React component"
+	},
+	"Next.js Component with Props": {
+		"prefix": "ncp",
+		"body": [
+			"interface ${1:${TM_FILENAME_BASE/(^|-)(.)/${2:/upcase}/g}}Props {",
+			"  $0",
+			"}",
+			"",
+			"export default function ${1}({}: ${1}Props) {",
+			"  return (",
+			"    <${2:div}>${3}</${2}>",
+			"  );",
+			"}"
+		],
+		"description": "Create a Next.js React component with filename-based props"
+	},
+	"Next.js Client Component with Props": {
+		"prefix": "nccp",
+		"body": [
+			"\"use client\";",
+			"",
+			"interface ${1:${TM_FILENAME_BASE/(^|-)(.)/${2:/upcase}/g}}Props {",
+			"  $0",
+			"}",
+			"",
+			"export default function ${1}({}: ${1}Props) {",
+			"  return (",
+			"    <${2:div}>${3}</${2}>",
+			"  );",
+			"}"
+		],
+		"description": "Create a Next.js client component with filename-based props"
+	},
+	"Next.js Async Component with Props": {
+		"prefix": "ncap",
+		"body": [
+			"interface ${1:${TM_FILENAME_BASE/(^|-)(.)/${2:/upcase}/g}}Props {",
+			"  $0",
+			"}",
+			"",
+			"export default async function ${1}({}: ${1}Props) {",
+			"  return (",
+			"    <${2:div}>${3}</${2}>",
+			"  );",
+			"}"
+		],
+		"description": "Create an async Next.js React component with filename-based props"
+	},
+	"Next.js Layout": {
+		"prefix": "nl",
+		"body": [
+			"interface LayoutProps {",
+			"  children: React.ReactNode;",
+			"}",
+			"",
+			"export default function Layout({ children }: LayoutProps) {",
+			"  return (",
+			"    <${2:div}>",
+			"      {children}",
+			"    </${2}>",
+			"  );",
+			"}"
+		],
+		"description": "Create a Next.js layout"
+	},
+	"Next.js Client Layout": {
+		"prefix": "ncl",
+		"body": [
+			"\"use client\";",
+			"",
+			"interface LayoutProps {",
+			"  children: React.ReactNode;",
+			"}",
+			"",
+			"export default function Layout({ children }: LayoutProps) {",
+			"  return (",
+			"    <${1:div}>",
+			"      {children}",
+			"    </${1}>",
+			"  );",
+			"}"
+		],
+		"description": "Create a Next.js client layout"
+	},
+	"Next.js Async Layout": {
+		"prefix": "nla",
+		"body": [
+			"interface LayoutProps {",
+			"  children: React.ReactNode;",
+			"}",
+			"",
+			"export default async function Layout({ children }: LayoutProps) {",
+			"  return (",
+			"    <${2:div}>",
+			"      {children}",
+			"    </${2}>",
+			"  );",
+			"}"
+		],
+		"description": "Create an async Next.js layout"
+	},
+	"React useState": {
+		"prefix": "ust",
+		"body": [
+			"const [${1:value}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:initialValue});$0"
+		],
+		"description": "Create a React useState"
+	},
+	"React useEffect": {
+		"prefix": "uef",
+		"body": ["useEffect(() => {", "  $1", "}, [${2}]);$0"],
+		"description": "Create a React useEffect"
+	},
+	"Try Catch": {
+		"prefix": "tc",
+		"body": [
+			"try {",
+			"  $1",
+			"} catch (error) {",
+			"  console.error(error);",
+			"  $0",
+			"}"
+		],
+		"description": "Create try catch block"
+	},
+	"Async Function": {
+		"prefix": "afn",
+		"body": ["async function ${1:functionName}(${2}) {", "  $0", "}"],
+		"description": "Create an async function"
+	},
+	"Next.js Server Action": {
+		"prefix": "nsa",
+		"body": [
+			"\"use server\";",
+			"",
+			"export async function ${1:actionName}(${2}) {",
+			"  $0",
+			"}"
+		],
+		"description": "Create a Next.js server action"
+	},
+	"Next.js API Route": {
+		"prefix": "napi",
+		"body": [
+			"import { NextResponse } from \"next/server\";",
+			"",
+			"export async function GET() {",
+			"  try {",
+			"    $1",
+			"    return NextResponse.json(${2:{}});",
+			"  } catch (error) {",
+			"    console.error(error);",
+			"    return NextResponse.json(",
+			"      { error: \"Internal Server Error\" },",
+			"      { status: 500 }",
+			"    );",
+			"  }",
+			"}"
+		],
+		"description": "Create a Next.js GET API route"
+	},
+	"Console Log": {
+		"prefix": "cl",
+		"body": ["console.log(${1});$0"],
+		"description": "Create console.log"
+	},
+	"Console Error": {
+		"prefix": "ce",
+		"body": ["console.error(${1});$0"],
+		"description": "Create console.error"
+	},
+	"Server Entry Header": {
+		"prefix": "serverheader",
+		"body": [
+			"// ============================================================",
+			"// 🚀 ${1:Server} — ${2:Application entry point}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Server entry point header"
+	},
+	"Config File Header": {
+		"prefix": "configheader",
+		"body": [
+			"// ============================================================",
+			"// ⚙️ ${1:Config} — ${2:Application configuration}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Configuration file header"
+	},
+	"Constants File Header": {
+		"prefix": "constantsheader",
+		"body": [
+			"// ============================================================",
+			"// 🔖 ${1:Constants} — ${2:Application constants}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Constants file header"
+	},
+	"Database File Header": {
+		"prefix": "databaseheader",
+		"body": [
+			"// ============================================================",
+			"// 🗄️ ${1:Database} — ${2:Database connection and configuration}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Database file header"
+	},
+	"Error File Header": {
+		"prefix": "errorheader",
+		"body": [
+			"// ============================================================",
+			"// ❌ ${1:AppError} — ${2:Application error definition}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Error file header"
+	},
+	"Middleware File Header": {
+		"prefix": "middlewareheader",
+		"body": [
+			"// ============================================================",
+			"// 🛡️ ${1:Middleware} — ${2:Request processing middleware}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Middleware file header"
+	},
+	"Model File Header": {
+		"prefix": "modelheader",
+		"body": [
+			"// ============================================================",
+			"// 🧱 ${1:Model} — ${2:Data model definition}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Model file header"
+	},
+	"Repository File Header": {
+		"prefix": "repositoryheader",
+		"body": [
+			"// ============================================================",
+			"// 💾 ${1:Repository} — ${2:Data access layer}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Repository file header"
+	},
+	"Route File Header": {
+		"prefix": "routeheader",
+		"body": [
+			"// ============================================================",
+			"// 🛣️ ${1:Routes} — ${2:API route definitions}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Route file header"
+	},
+	"Controller File Header": {
+		"prefix": "controllerheader",
+		"body": [
+			"// ============================================================",
+			"// 🎮 ${1:Controller} — ${2:HTTP request handlers}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Controller file header"
+	},
+	"Service File Header": {
+		"prefix": "serviceheader",
+		"body": [
+			"// ============================================================",
+			"// 🔧 ${1:Service} — ${2:Business logic}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Service file header"
+	},
+	"Type File Header": {
+		"prefix": "typeheader",
+		"body": [
+			"// ============================================================",
+			"// 📝 ${1:Types} — ${2:Type definitions}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Type definition file header"
+	},
+	"Utility File Header": {
+		"prefix": "utilheader",
+		"body": [
+			"// ============================================================",
+			"// 🔨 ${1:Utility} — ${2:Reusable utility functions}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Utility file header"
+	},
+	"Schema File Header": {
+		"prefix": "schemaheader",
+		"body": [
+			"// ============================================================",
+			"// 📐 ${1:Schema} — ${2:Data validation schema}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Schema validation file header"
+	},
+	"DTO File Header": {
+		"prefix": "dtoheader",
+		"body": [
+			"// ============================================================",
+			"// 📦 ${1:DTO} — ${2:Data transfer object}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "DTO file header"
+	},
+	"Validator File Header": {
+		"prefix": "validatorheader",
+		"body": [
+			"// ============================================================",
+			"// ✅ ${1:Validator} — ${2:Input validation logic}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Validator file header"
+	},
+	"Guard File Header": {
+		"prefix": "guardheader",
+		"body": [
+			"// ============================================================",
+			"// 🚧 ${1:Guard} — ${2:Access control and protection}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Guard file header"
+	},
+	"Policy File Header": {
+		"prefix": "policyheader",
+		"body": [
+			"// ============================================================",
+			"// 📜 ${1:Policy} — ${2:Authorization policy}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Policy file header"
+	},
+	"Permission File Header": {
+		"prefix": "permissionheader",
+		"body": [
+			"// ============================================================",
+			"// 🔑 ${1:Permission} — ${2:Permission definitions}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Permission file header"
+	},
+	"Factory File Header": {
+		"prefix": "factoryheader",
+		"body": [
+			"// ============================================================",
+			"// 🏭 ${1:Factory} — ${2:Object creation logic}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Factory file header"
+	},
+	"Provider File Header": {
+		"prefix": "providerheader",
+		"body": [
+			"// ============================================================",
+			"// 🔌 ${1:Provider} — ${2:External service provider}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Provider file header"
+	},
+	"Adapter File Header": {
+		"prefix": "adapterheader",
+		"body": [
+			"// ============================================================",
+			"// 🔄 ${1:Adapter} — ${2:External interface adapter}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Adapter file header"
+	},
+	"Integration File Header": {
+		"prefix": "integrationheader",
+		"body": [
+			"// ============================================================",
+			"// 🔗 ${1:Integration} — ${2:External service integration}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Integration file header"
+	},
+	"Event File Header": {
+		"prefix": "eventheader",
+		"body": [
+			"// ============================================================",
+			"// 📣 ${1:Event} — ${2:Application event definition}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Event file header"
+	},
+	"Listener File Header": {
+		"prefix": "listenerheader",
+		"body": [
+			"// ============================================================",
+			"// 👂 ${1:Listener} — ${2:Event listener}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Event listener file header"
+	},
+	"Job File Header": {
+		"prefix": "jobheader",
+		"body": [
+			"// ============================================================",
+			"// ⏱️ ${1:Job} — ${2:Background job}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Background job file header"
+	},
+	"Queue File Header": {
+		"prefix": "queueheader",
+		"body": [
+			"// ============================================================",
+			"// 📬 ${1:Queue} — ${2:Background job queue}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Queue file header"
+	},
+	"Worker File Header": {
+		"prefix": "workerheader",
+		"body": [
+			"// ============================================================",
+			"// 👷 ${1:Worker} — ${2:Background worker}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Worker file header"
+	},
+	"Strategy File Header": {
+		"prefix": "strategyheader",
+		"body": [
+			"// ============================================================",
+			"// ♟️ ${1:Strategy} — ${2:Strategy implementation}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Strategy file header"
+	},
+	"Mapper File Header": {
+		"prefix": "mapperheader",
+		"body": [
+			"// ============================================================",
+			"// 🗺️ ${1:Mapper} — ${2:Data transformation and mapping}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Mapper file header"
+	},
+	"Serializer File Header": {
+		"prefix": "serializerheader",
+		"body": [
+			"// ============================================================",
+			"// 🔤 ${1:Serializer} — ${2:Data serialization}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Serializer file header"
+	},
+	"Cache File Header": {
+		"prefix": "cacheheader",
+		"body": [
+			"// ============================================================",
+			"// ⚡ ${1:Cache} — ${2:Caching logic}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Cache file header"
+	},
+	"Security File Header": {
+		"prefix": "securityheader",
+		"body": [
+			"// ============================================================",
+			"// 🔐 ${1:Security} — ${2:Security-related logic}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Security file header"
+	},
+	"Logger File Header": {
+		"prefix": "loggerheader",
+		"body": [
+			"// ============================================================",
+			"// 📋 ${1:Logger} — ${2:Application logging}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Logger file header"
+	},
+	"Test File Header": {
+		"prefix": "testheader",
+		"body": [
+			"// ============================================================",
+			"// 🧪 ${1:Test} — ${2:Test suite}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Test file header"
+	},
+	"Mock File Header": {
+		"prefix": "mockheader",
+		"body": [
+			"// ============================================================",
+			"// 🎭 ${1:Mock} — ${2:Test mock}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Mock file header"
+	},
+	"Seed File Header": {
+		"prefix": "seedheader",
+		"body": [
+			"// ============================================================",
+			"// 🌱 ${1:Seed} — ${2:Database seed data}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Database seed file header"
+	},
+	"Migration File Header": {
+		"prefix": "migrationheader",
+		"body": [
+			"// ============================================================",
+			"// 🔄 ${1:Migration} — ${2:Database migration}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Database migration file header"
+	},
+	"Documentation File Header": {
+		"prefix": "docsheader",
+		"body": [
+			"// ============================================================",
+			"// 📚 ${1:Documentation} — ${2:Documentation and references}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Documentation file header"
+	},
+	"Generic TypeScript File Header": {
+		"prefix": "fileheader",
+		"body": [
+			"// ============================================================",
+			"// 📦 ${1:FileName} — ${2:Description}",
+			"// ============================================================",
+			"",
+			"$0"
+		],
+		"description": "Standard project file header"
+	}
+}
