@@ -735,6 +735,17 @@
 		],
 		"description": "Insert a standard constant documentation header"
 	},
+	"API Route Documentation": {
+		"prefix": "apidoc",
+		"body": [
+			"// @desc ${1:Description}",
+			"// @route ${2:GET} ${3:/}",
+			"// @access ${4:Public}",
+			"",
+			"$0"
+		],
+		"description": "Insert API route documentation comments"
+	},
 	"TODO Comment": {
 		"prefix": "todo",
 		"body": ["// Todo: ${1:Description}"],

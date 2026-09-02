@@ -9,6 +9,7 @@ export const appConfigSchema = z.object({
 	FRONTEND_URL: z.url().default("http://localhost:5173"),
 	APP_ORIGIN: z.url().default("http://localhost:3000"),
 	CSRF_SECRET: z.string("CSRF secret must be provided"),
+	APP_VERSION: z.string("Application version must be provided"),
 	LOG_LEVEL: z
 		.enum(["error", "warn", "info", "http", "verbose", "debug", "silly"])
 		.default("info"),
