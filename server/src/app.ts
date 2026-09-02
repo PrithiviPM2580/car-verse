@@ -5,6 +5,7 @@
 import express, { type Application } from "express";
 import helmet from "helmet";
 import hpp from "hpp-clean";
+import router from "./routes/index.route";
 import cors from "./utils/cors.util";
 import morganOptions from "./utils/morgan.util";
 import sanitize from "./utils/sanitizer.util";
@@ -24,5 +25,7 @@ app.use(morganOptions);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(hpp({ keepFirst: true }));
+
+app.use(router);
 
 export default app;

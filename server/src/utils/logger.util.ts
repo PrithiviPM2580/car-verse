@@ -1,13 +1,14 @@
 // ============================================================
-// 🧩 LoggerLib — Logging library
+// 🔨 Utility — Reusable utility functions
 // ============================================================
 
-import { appConfig } from "@/config/app.config";
 import "winston-daily-rotate-file";
 import fs from "node:fs";
 import path from "node:path";
 import chalk from "chalk";
 import winston from "winston";
+
+import { appConfig } from "@/config/app.config";
 
 // ------------------------------------------------------
 //  Logger Interface
@@ -17,64 +18,70 @@ interface LogInfo extends winston.Logform.TransformableInfo {
 	label?: string;
 }
 
-// Logger format components
+// ------------------------------------------------------
+//  Logger Format Components
+// ------------------------------------------------------
 const { combine, timestamp, printf } = winston.format;
 
-//  Logger transports array
+// ------------------------------------------------------
+//  Logger Transports
+// ------------------------------------------------------
 const transports: winston.transport[] = [];
 
-// Log directory path and create if it doesn't exist
+// ------------------------------------------------------
+//  Log Directory
+// ------------------------------------------------------
 const logDir = path.join(process.cwd(), "logs");
+
 if (appConfig.NODE_ENV === "production" && !fs.existsSync(logDir)) {
-	fs.mkdirSync(logDir);
+	fs.mkdirSync(logDir, { recursive: true });
 }
 
 // ------------------------------------------------------
-//  Loggger custom format
+//  Logger Custom Format
 // ------------------------------------------------------
 const customFormat = combine(
-	// Add timestamp to log entries
 	timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
 
-	// Custom log message format
 	printf((info) => {
-		// Destructure log info
 		const { timestamp, level, message, label, ...meta } = info as LogInfo;
 
-		// Format label and metadata
+		// Format label
 		const labelStr = label ? `${label}` : "";
 
-		// Clean metadata: only include string keys
+		// Clean metadata
 		const cleanMeta = Object.fromEntries(
 			Object.entries(meta).filter(([key]) => typeof key === "string"),
 		);
 
-		// Stringify metadata if present
+		// Stringify metadata
 		const metaStr = Object.keys(cleanMeta).length
 			? `\n${JSON.stringify(cleanMeta, null, 2)}`
 			: "";
 
 		// Color-coded log output
 		switch (level) {
-			// Different colors for different log levels
 			case "info":
 				return `🟢 ${chalk.gray(timestamp)} [${chalk.green(
 					level.toUpperCase(),
 				)}] [${chalk.cyanBright("APP")}: ${chalk.green(
 					labelStr,
 				)}]: ${chalk.greenBright(message)} ${chalk.greenBright(metaStr)}`;
+
 			case "error":
 				return `🔴 ${chalk.gray(timestamp)} [${chalk.red(
 					level.toUpperCase(),
 				)}] [${chalk.cyanBright("APP")}: ${chalk.red(
 					labelStr,
 				)}]: ${chalk.redBright(message)} ${chalk.redBright(metaStr)}`;
+
 			case "warn":
 				return `🟡 ${chalk.gray(timestamp)} [${chalk.yellow(
 					level.toUpperCase(),
 				)}] [${chalk.cyanBright("APP")}: ${chalk.yellow(
 					labelStr,
 				)}]: ${chalk.yellowBright(message)} ${chalk.yellowBright(metaStr)}`;
+
 			default:
 				return `${chalk.gray(timestamp)} [${chalk.green(
 					level.toUpperCase(),
@@ -86,28 +93,20 @@ const customFormat = combine(
 );
 
 // ------------------------------------------------------
-//  Configure transports based on environment
+//  Configure Transports
 // ------------------------------------------------------
-if (appConfig.NODE_ENV !== "production" && appConfig.NODE_ENV !== "test") {
-	// Console transport for non-production environments
+if (appConfig.NODE_ENV === "development") {
+	// Console transport for development
 	transports.push(
 		new winston.transports.Console({
 			format: customFormat,
 			level: appConfig.LOG_LEVEL,
 		}),
 	);
+}
 
-	transports.push(
-		new winston.transports.DailyRotateFile({
-			dirname: logDir,
-			filename: "app-%DATE%.log",
-			datePattern: "YYYY-MM-DD",
-			maxFiles: "14d",
-			level: appConfig.LOG_LEVEL,
-		}),
-	);
-} else {
-	// File transports for production environment
+if (appConfig.NODE_ENV === "production") {
+	// Application log
 	transports.push(
 		new winston.transports.File({
 			filename: path.join(logDir, "app.log"),
@@ -115,7 +114,7 @@ if (appConfig.NODE_ENV !== "production" && appConfig.NODE_ENV !== "test") {
 		}),
 	);
 
-	// Error log file transport for production environment
+	// Error log
 	transports.push(
 		new winston.transports.File({
 			filename: path.join(logDir, "errors.log"),
@@ -123,7 +122,7 @@ if (appConfig.NODE_ENV !== "production" && appConfig.NODE_ENV !== "test") {
 		}),
 	);
 
-	// Combined log file transport for production environment
+	// Combined log
 	transports.push(
 		new winston.transports.File({
 			filename: path.join(logDir, "combined.log"),
@@ -132,7 +131,7 @@ if (appConfig.NODE_ENV !== "production" && appConfig.NODE_ENV !== "test") {
 }
 
 // ------------------------------------------------------
-//  Create and export the logger instance
+//  Create Logger Instance
 // ------------------------------------------------------
 const logger = winston.createLogger({
 	level: appConfig.LOG_LEVEL,
